@@ -35,7 +35,7 @@ def generate(label,text,fileformat):
     
     # validate inputs
     if label not in lg.POSSIBLE_LABELS:
-        raise Exception("Label "+label+" not found! Only given_away, instructed, public, owner_only and documented are possible labels!")
+        raise Exception("Label "+label+" not found! Only given_away, instructed, public, owner_only, documented, hackable and not_applicable are possible labels!")
         
     # generate image
     img = lg.buildImage(label,text)
@@ -70,7 +70,8 @@ def serverJPEGEmpty(label):
 
 @app.route('/', methods=['GET'])
 def serverIndex():
-    resp = flask.make_response(flask.render_template('index.html', version=getVersion()), 200)
+    lg = LabelGenerator()
+    resp = flask.make_response(flask.render_template('index.html', version=getVersion(), labels=lg.POSSIBLE_LABELS), 200)
     resp.headers["Content-type"] = "text/html; charset=utf-8"
     return resp
 

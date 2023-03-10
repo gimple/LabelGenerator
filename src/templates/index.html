@@ -40,11 +40,9 @@
     </p>
     <p class="card-text"><code>label</code> should be one of the following five options
     <ul>
-        <li>owner_only</li>
-        <li>instructed</li>
-        <li>documented</li>
-        <li>public</li>
-        <li>give_away</li>
+      {% for lbl in labels %}
+        <li><code>{{ lbl }}</code></li>
+      {% endfor %}
     </ul>
     </p>
     <p class="card-text"><code>your_name</code> field is the text, you want to be written on the label.</p>
@@ -60,11 +58,9 @@
     <p class="card-text">
         <form id="interactive_designed"> 
             <select id="labelInput">
-                <option value="owner_only">owner_only</option>
-                <option value="instructed">instructed</option>
-                <option value="documented">documented</option>
-                <option value="public">public</option>
-                <option value="give_away">give_away</option>
+                {% for lbl in labels %}
+                <option value="{{ lbl }}">{{ lbl }}</option>
+                {% endfor %}
             </select>
             <input id="textInput" type="text" value="your_name">
             <select id="formatInput">
@@ -90,7 +86,7 @@
 <div class="card" style="width: 100%;">
   <div class="card-body">
     <h5 class="card-title">Licence</h5>
-    <p class="card-text">Copyright (c) 2021 Maximilian Noppel</p>
+    <p class="card-text">Copyright (c) 2021-2022 Maximilian Noppel</p>
     <p class="card-text">Permission is hereby granted, free of charge, to any person obtaining a copy
     of this software and associated documentation files (the "Software"), to deal
     in the Software without restriction, including without limitation the rights
